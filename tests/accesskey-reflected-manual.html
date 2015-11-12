@@ -61,7 +61,16 @@ function updateInfo() {
  <dt class="pass">Yandex browser 15.4.2272.3909 beta, MacOS 10.10.5 (based on Chromium)</dt>
   <dd class="pass">Within the first 10 seconds of loading, ctrl-alt-"a" presses the button. Afterward, ctrl-alt-g does so instead. The attempt to open a window is blocked by the Yandex pop-up manager, as if it were not triggered by a user action, but the button retains focus.</dd>
   <dd class="pass">After the timeout, the paragraph below the button gives "<samp>g</samp>" for the value of the <code>accesskey</code>, showing that the DOM <code>accessKey</code> has been successfully updated.</dd>
-</dl>
+<dt class="pass">Firefox 42, Windows 7</dt>
+  <dd class="pass">Within the first 10 seconds of loading, Alt+Shift+a presses the button, opening the github page. Afterward, Alt+Shift+g does so instead.</dd>
+  <dd class="pass">After the timeout, the paragraph below the button gives "<samp>g</samp>" for the value of the <code>accesskey</code>, showing that the DOM <code>accessKey</code> has been successfully updated.</dd>
+  <dd class="pass">Firefox adds "<samp>activation: Alt+Shift+g</samp>" to the button, showing it successfully updates the value of the <code>accessKeyLabel</code> DOM attribute</dd>
+ <dt class="fail">Internet Explorer 11, Windows 7</dt>
+ <dt class="partial">Chrome 46, Windows 7</dt>
+  <dd class="fail">Trying to use either key plus modifiers does not do anything.</dd>
+  <dd class="pass">After the timeout, the paragraph below the button gives "<samp>g</samp>" for the value of the <code>accesskey</code>, showing that the DOM <code>accessKey</code> has been successfully updated.</dd>
+  <dd class="partial">Button value does not update. Alt+Shift+g presses the button, opening the github page.</dd>
+ </dl>
 
 <h2 id="discussion">Discussion</h2>
 <p>The <code>accesskey</code> attribute was first <a href="http://www.w3.org/TR/1998/REC-html40-19980424/interact/forms.html#adef-accesskey">defined in HTML 4</a>, and an improved version was <a href="http://www.w3.org/TR/html5/editing.html#the-accesskey-attribute">redefined in HTML5</a>
